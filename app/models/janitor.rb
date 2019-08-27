@@ -1,0 +1,2 @@
+class Janitor < ApplicationRecord
+end

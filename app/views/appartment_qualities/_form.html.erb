@@ -1,0 +1,42 @@
+<%= form_with(model: appartment_quality, local: true) do |form| %>
+  <% if appartment_quality.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(appartment_quality.errors.count, "error") %> prohibited this appartment_quality from being saved:</h2>
+
+      <ul>
+      <% appartment_quality.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :appartment_id %>
+    <%= form.text_field :appartment_id, id: :appartment_quality_appartment_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cable %>
+    <%= form.check_box :cable, id: :appartment_quality_cable %>
+  </div>
+
+  <div class="field">
+    <%= form.label :conditioned_air %>
+    <%= form.check_box :conditioned_air, id: :appartment_quality_conditioned_air %>
+  </div>
+
+  <div class="field">
+    <%= form.label :internet %>
+    <%= form.check_box :internet, id: :appartment_quality_internet %>
+  </div>
+
+  <div class="field">
+    <%= form.label :calefaction %>
+    <%= form.check_box :calefaction, id: :appartment_quality_calefaction %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

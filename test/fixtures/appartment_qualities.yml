@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appartment: one
+  cable: false
+  conditioned_air: false
+  internet: false
+  calefaction: false
+
+two:
+  appartment: two
+  cable: false
+  conditioned_air: false
+  internet: false
+  calefaction: false

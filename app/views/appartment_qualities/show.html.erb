@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Appartment:</strong>
+  <%= @appartment_quality.appartment %>
+</p>
+
+<p>
+  <strong>Cable:</strong>
+  <%= @appartment_quality.cable %>
+</p>
+
+<p>
+  <strong>Conditioned air:</strong>
+  <%= @appartment_quality.conditioned_air %>
+</p>
+
+<p>
+  <strong>Internet:</strong>
+  <%= @appartment_quality.internet %>
+</p>
+
+<p>
+  <strong>Calefaction:</strong>
+  <%= @appartment_quality.calefaction %>
+</p>
+
+<%= link_to 'Edit', edit_appartment_quality_path(@appartment_quality) %> |
+<%= link_to 'Back', appartment_qualities_path %>

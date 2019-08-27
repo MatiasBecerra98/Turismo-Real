@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Extra Services</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Reservation</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @extra_services.each do |extra_service| %>
+      <tr>
+        <td><%= extra_service.reservation %></td>
+        <td><%= extra_service.name %></td>
+        <td><%= link_to 'Show', extra_service %></td>
+        <td><%= link_to 'Edit', edit_extra_service_path(extra_service) %></td>
+        <td><%= link_to 'Destroy', extra_service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Extra Service', new_extra_service_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Appartment:</strong>
+  <%= @cleaning_event.appartment %>
+</p>
+
+<p>
+  <strong>Time of event:</strong>
+  <%= @cleaning_event.time_of_event %>
+</p>
+
+<p>
+  <strong>Janitor:</strong>
+  <%= @cleaning_event.janitor %>
+</p>
+
+<p>
+  <strong>Reminder sent:</strong>
+  <%= @cleaning_event.reminder_sent %>
+</p>
+
+<%= link_to 'Edit', edit_cleaning_event_path(@cleaning_event) %> |
+<%= link_to 'Back', cleaning_events_path %>

@@ -1,0 +1,37 @@
+<%= form_with(model: cleaning_event, local: true) do |form| %>
+  <% if cleaning_event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cleaning_event.errors.count, "error") %> prohibited this cleaning_event from being saved:</h2>
+
+      <ul>
+      <% cleaning_event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :appartment_id %>
+    <%= form.text_field :appartment_id, id: :cleaning_event_appartment_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_of_event %>
+    <%= form.datetime_select :time_of_event, id: :cleaning_event_time_of_event %>
+  </div>
+
+  <div class="field">
+    <%= form.label :janitor_id %>
+    <%= form.text_field :janitor_id, id: :cleaning_event_janitor_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reminder_sent %>
+    <%= form.check_box :reminder_sent, id: :cleaning_event_reminder_sent %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

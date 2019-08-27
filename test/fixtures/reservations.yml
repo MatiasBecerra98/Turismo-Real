@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  appartment: one
+  starting_date: 2019-08-27
+  ending_date: 2019-08-27
+  total_cost: 1
+  paid: false
+
+two:
+  user: two
+  appartment: two
+  starting_date: 2019-08-27
+  ending_date: 2019-08-27
+  total_cost: 1
+  paid: false

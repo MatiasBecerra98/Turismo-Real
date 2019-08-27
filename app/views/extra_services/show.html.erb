@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reservation:</strong>
+  <%= @extra_service.reservation %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @extra_service.name %>
+</p>
+
+<%= link_to 'Edit', edit_extra_service_path(@extra_service) %> |
+<%= link_to 'Back', extra_services_path %>

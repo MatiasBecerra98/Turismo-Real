@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Supply:</strong>
+  <%= @supply_movement.supply %>
+</p>
+
+<p>
+  <strong>Appartment:</strong>
+  <%= @supply_movement.appartment %>
+</p>
+
+<p>
+  <strong>Movement:</strong>
+  <%= @supply_movement.movement %>
+</p>
+
+<%= link_to 'Edit', edit_supply_movement_path(@supply_movement) %> |
+<%= link_to 'Back', supply_movements_path %>

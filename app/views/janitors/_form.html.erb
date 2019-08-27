@@ -1,0 +1,22 @@
+<%= form_with(model: janitor, local: true) do |form| %>
+  <% if janitor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(janitor.errors.count, "error") %> prohibited this janitor from being saved:</h2>
+
+      <ul>
+      <% janitor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :janitor_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

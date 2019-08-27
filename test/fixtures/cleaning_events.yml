@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appartment: one
+  time_of_event: 2019-08-27 19:40:46
+  janitor: one
+  reminder_sent: false
+
+two:
+  appartment: two
+  time_of_event: 2019-08-27 19:40:46
+  janitor: two
+  reminder_sent: false

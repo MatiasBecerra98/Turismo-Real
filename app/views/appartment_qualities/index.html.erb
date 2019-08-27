@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Appartment Qualities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Appartment</th>
+      <th>Cable</th>
+      <th>Conditioned air</th>
+      <th>Internet</th>
+      <th>Calefaction</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @appartment_qualities.each do |appartment_quality| %>
+      <tr>
+        <td><%= appartment_quality.appartment %></td>
+        <td><%= appartment_quality.cable %></td>
+        <td><%= appartment_quality.conditioned_air %></td>
+        <td><%= appartment_quality.internet %></td>
+        <td><%= appartment_quality.calefaction %></td>
+        <td><%= link_to 'Show', appartment_quality %></td>
+        <td><%= link_to 'Edit', edit_appartment_quality_path(appartment_quality) %></td>
+        <td><%= link_to 'Destroy', appartment_quality, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Appartment Quality', new_appartment_quality_path %>

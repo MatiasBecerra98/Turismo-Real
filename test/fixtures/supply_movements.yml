@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  supply: one
+  appartment: one
+  movement: 1
+
+two:
+  supply: two
+  appartment: two
+  movement: 1

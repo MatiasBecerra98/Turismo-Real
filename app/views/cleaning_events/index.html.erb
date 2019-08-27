@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cleaning Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Appartment</th>
+      <th>Time of event</th>
+      <th>Janitor</th>
+      <th>Reminder sent</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cleaning_events.each do |cleaning_event| %>
+      <tr>
+        <td><%= cleaning_event.appartment %></td>
+        <td><%= cleaning_event.time_of_event %></td>
+        <td><%= cleaning_event.janitor %></td>
+        <td><%= cleaning_event.reminder_sent %></td>
+        <td><%= link_to 'Show', cleaning_event %></td>
+        <td><%= link_to 'Edit', edit_cleaning_event_path(cleaning_event) %></td>
+        <td><%= link_to 'Destroy', cleaning_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cleaning Event', new_cleaning_event_path %>
