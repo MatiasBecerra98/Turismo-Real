@@ -3,7 +3,7 @@ ActiveAdmin.register ExtraService do
   index do
     selectable_column
     id_column
-    column :reservation_id
+    column :reservation
     column :name
     actions
   end
@@ -13,7 +13,10 @@ ActiveAdmin.register ExtraService do
 
   form do |f|
   f.inputs do
-    f.input :reservation_id
+    f.input :reservation_id,
+            as: :select,
+            collection: Reservation.joins(:user).pluck('users.email', 'id'),
+            include_blank: 'Seleccion reservation'
     f.input :name
   end
   f.actions

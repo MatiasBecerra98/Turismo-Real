@@ -4,7 +4,7 @@ ActiveAdmin.register Reservation do
   index do
     selectable_column
     id_column
-    column :user_id
+    column :user
     column :appartment_id
     column :starting_date
     column :ending_date
@@ -22,8 +22,15 @@ ActiveAdmin.register Reservation do
 
   form do |f|
     f.inputs do
-      f.input :user_id
-      f.input :appartment_id
+      f.input :user,
+              as: :select,
+              collection: User.pluck('email', 'id'),
+              include_blank: 'Seleccione Usuario'
+      f.input :appartment_id,
+              as: :select, collection:
+              Appartment.all.pluck('id'),
+              include_blank: 'Seleccione Departamento',
+              input_html: { style: 'min-width: 100px;' }
       f.input :starting_date
       f.input :ending_date
       f.input :total_cost

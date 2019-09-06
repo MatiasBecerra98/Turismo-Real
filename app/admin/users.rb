@@ -14,7 +14,13 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs do
       f.input :email
-      f.input :profile_id
+      f.input :profile_id,
+              as: :select, collection:
+              Profile.all,
+              label_method: :name,
+              value_method: :id,
+              include_blank: 'Seleccione Perfil',
+              input_html: { style: 'min-width: 100px;' }
       f.input :password
     end
     f.actions

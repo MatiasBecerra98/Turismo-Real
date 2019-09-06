@@ -4,7 +4,6 @@ ActiveAdmin.register AppartmentQuality do
   index do
     selectable_column
     id_column
-    column :name
     column :appartment_id
     column :cable
     column :conditioned_air
@@ -14,7 +13,6 @@ ActiveAdmin.register AppartmentQuality do
     actions
   end
 
-  filter :name
   filter :appartment_id
   filter :cable
   filter :conditioned_air
@@ -24,7 +22,11 @@ ActiveAdmin.register AppartmentQuality do
 
   form do |f|
     f.inputs do
-      f.input :appartment_id
+      f.input :appartment_id,
+              as: :select, collection:
+              Appartment.all.pluck('id'),
+              include_blank: 'Seleccione Departamento',
+              input_html: { style: 'min-width: 100px;' }
       f.input :cable
       f.input :conditioned_air
       f.input :internet
@@ -32,5 +34,4 @@ ActiveAdmin.register AppartmentQuality do
     end
     f.actions
   end
-
 end
