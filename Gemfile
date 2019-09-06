@@ -52,9 +52,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-# Devise 
+# Devise
 gem 'devise'
-# Gema JSON web token 
+# Gema JSON web token
 gem 'jwt'
 # Simple command for web services
 gem 'simple_command'
@@ -64,9 +64,9 @@ group :development do
   gem 'binding_of_caller'
 end
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
-# Devise 
+# Devise
 gem 'devise'
-# Gema JSON web token 
+# Gema JSON web token
 gem 'jwt'
 # Simple command for web services
 gem 'simple_command'
@@ -81,3 +81,4 @@ gem 'activeadmin'
 gem 'cancancan'
 gem 'draper'
 gem 'pundit'
+gem 'blueprinter'
