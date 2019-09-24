@@ -24,8 +24,8 @@ test:
 
 production:
   <<: *default
-  database: ENV_DATABASE
-  username: ENV_USERNAME
-  password: ENV_PASSWORD
-  host: ENV_HOST
+  database: d9oocfm9uhq52k
+  username: vtnbxscndsicnr
+  password: be6ac944fca4c553d33a1a1695bc75378b0c0326c26f3598107189fa0588e058
+  host: ec2-23-21-160-38.compute-1.amazonaws.com
 
