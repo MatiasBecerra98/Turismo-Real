@@ -10,4 +10,9 @@ class AuthenticationController < ApplicationController
       render json: { error: command.errors }, status: :unauthorized
     end
   end
+
+  def new_user
+    User.create!(email: params[:email] , password: params[:password] , password_confirmation: params[:password_confirmation] )
+    render json: {status: "OK"}
+  end
  end
