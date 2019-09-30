@@ -61,6 +61,13 @@ class AppartmentsController < ApplicationController
     end
   end
 
+  def get_available_apartments
+
+    @appartments = Appartment.includes(:reservations).where.not("daterange(reservations.starting_date, reservations.ending_date, '[]') && daterange(?, ?, '[]')", Date.parse(params[:since_date]).strftime("%Y-%m-%d"), Date.parse(params[:until_date]).strftime("%Y-%m-%d")).references(:reservation)
+
+    render json: @appartments
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_appartment
