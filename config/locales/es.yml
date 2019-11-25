@@ -100,6 +100,7 @@ es:
         updated_at: Fecha Modificación
       appartment:
         nightly_fee: "Precio por noche"
+        address: "Dirección"
   active_admin:
     dashboard: "Inicio"
     dashboard_welcome:
