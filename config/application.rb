@@ -20,7 +20,6 @@ module A
 
     config.autoload_paths << Rails.root.join("lib")
     config.eager_load_paths << Rails.root.join("lib")
-
     config.secret_key_base = '18c77a1ddef05bc31e3f8d32cc32d031bb21326522782d92af3242d48d4caa5c7535f9b591ee693ac86bebb7008424572a176bea861ef94e31d9dbab56135b27'
 
     # Settings in config/environments/* take precedence over those specified here.
