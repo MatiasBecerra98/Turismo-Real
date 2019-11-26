@@ -19,7 +19,7 @@ ActiveAdmin.register Appartment do
       row :address
       row :name
       row :image do |appartment|
-        url_for(appartment.image)
+        url_for(appartment.image) unless appartment.image.attachment.nil?
       end
     end
   end
