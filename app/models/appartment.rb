@@ -23,8 +23,9 @@ class Appartment < ApplicationRecord
   end
 
   def image_url
-    unless self.image.attachment.nil?
-      rails_blob_path(self.image, disposition: "attachment", only_path: true)
-    end
+    'https://appartmetphotos.s3.amazonaws.com/departamento.jpg'
+    # unless self.image.attachment.nil?
+    #   rails_blob_path(self.image, disposition: "attachment", only_path: true)
+    # end
   end
 end
