@@ -2,6 +2,7 @@
 class Appartment < ApplicationRecord
   has_one :appartment_quality
   has_many :reservations
+  has_one_attached :image
 
   def cable
     self.appartment_quality.try(:cable) || false

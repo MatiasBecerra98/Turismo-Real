@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.7'
+gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -68,3 +68,5 @@ gem 'draper'
 # Gema JSON web token
 gem 'jwt'
 gem 'pundit'
+#S3
+gem 'aws-sdk-s3', '~> 1'

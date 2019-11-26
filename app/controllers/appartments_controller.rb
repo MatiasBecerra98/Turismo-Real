@@ -76,6 +76,6 @@ class AppartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def appartment_params
-      params.require(:appartment).permit(:nightly_fee, :address, :name)
+      params.require(:appartment).permit(:nightly_fee, :address, :name, :image)
     end
 end
