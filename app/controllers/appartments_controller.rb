@@ -63,7 +63,7 @@ class AppartmentsController < ApplicationController
 
   def get_available_apartments
 
-    @appartments = Appartment.includes(:reservations).where.not("daterange(reservations.starting_date, reservations.ending_date, '[]') && daterange(?, ?, '[]')", Date.parse(params[:since_date]).strftime("%Y-%m-%d"), Date.parse(params[:until_date]).strftime("%Y-%m-%d")).references(:reservation)
+    @appartments = Appartment.includes(:reservations, :appartment_quality).where.not("daterange(reservations.starting_date, reservations.ending_date, '[]') && daterange(?, ?, '[]')", Date.parse(params[:since_date]).strftime("%Y-%m-%d"), Date.parse(params[:until_date]).strftime("%Y-%m-%d")).references(:reservation)
 
     render json: @appartments
   end
