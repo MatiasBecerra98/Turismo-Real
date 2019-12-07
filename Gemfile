@@ -70,3 +70,5 @@ gem 'jwt'
 gem 'pundit'
 #S3
 gem "aws-sdk-s3", require: false
+
+gem 'faker'

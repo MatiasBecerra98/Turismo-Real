@@ -129,6 +129,8 @@ GEM
       request_store (>= 1.0)
     erubi (1.9.0)
     execjs (2.7.0)
+    faker (2.8.1)
+      i18n (>= 1.6, < 1.8)
     ffi (1.11.3)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
@@ -307,6 +309,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   draper
+  faker
   jbuilder (~> 2.5)
   jwt
   listen (>= 3.0.5, < 3.2)
