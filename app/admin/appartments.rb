@@ -9,7 +9,7 @@ ActiveAdmin.register Appartment do
     column :name
     column :description
     column 'Image' do |appartment|
-      url_for(appartment.image) unless appartment.image.attachment.nil?
+      appartment.image_url
     end
     actions
   end
@@ -21,7 +21,7 @@ ActiveAdmin.register Appartment do
       row :name
       row :description
       row :image do |appartment|
-        url_for(appartment.image) unless appartment.image.attachment.nil?
+        appartment.image_url
       end
     end
   end
