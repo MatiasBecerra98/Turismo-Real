@@ -2,24 +2,24 @@
 class Appartment < ApplicationRecord
   include Rails.application.routes.url_helpers
 
-  has_one :appartment_quality
-  has_many :reservations
-  has_one_attached :image
+  has_one :appartment_quality, dependent: :destroy
+  has_many :reservations, dependent: :destroy
+  has_one_attached :image, dependent: :destroy
 
   def cable
-    self.appartment_quality.try(:cable) || false
+    appartment_quality.try(:cable) || false
   end
 
   def conditioned_air
-    self.appartment_quality.try(:conditioned_air) || false
+    appartment_quality.try(:conditioned_air) || false
   end
 
   def internet
-    self.appartment_quality.try(:internet) || false
+    appartment_quality.try(:internet) || false
   end
 
   def calefaction
-    self.appartment_quality.try(:calefaction) || false
+    appartment_quality.try(:calefaction) || false
   end
 
   def image_url

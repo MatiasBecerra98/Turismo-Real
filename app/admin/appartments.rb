@@ -1,5 +1,5 @@
 ActiveAdmin.register Appartment do
-  permit_params :nightly_fee, :address, :name, :image
+  permit_params :nightly_fee, :address, :name, :image, :description
 
   index do
     selectable_column
@@ -7,6 +7,7 @@ ActiveAdmin.register Appartment do
     column :nightly_fee
     column :address
     column :name
+    column :description
     column 'Image' do |appartment|
       url_for(appartment.image) unless appartment.image.attachment.nil?
     end
@@ -18,6 +19,7 @@ ActiveAdmin.register Appartment do
       row :nightly_fee
       row :address
       row :name
+      row :description
       row :image do |appartment|
         url_for(appartment.image) unless appartment.image.attachment.nil?
       end
@@ -31,6 +33,7 @@ ActiveAdmin.register Appartment do
       f.input :nightly_fee
       f.input :address
       f.input :name
+      f.input :description
       f.input :image, as: :file
     end
     f.actions
