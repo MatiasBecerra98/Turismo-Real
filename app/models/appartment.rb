@@ -61,10 +61,10 @@ class Appartment < ApplicationRecord
   end
 
   def image_url
-    # return rails_blob_url(image) unless
-    # image.attachment.nil?
+    unless image.attachment.nil?
+      return "https://turismorealbucket.s3.amazonaws.com/#{image.key}"
+    end
 
-    # nil
-    'https://appartmetphotos.s3.amazonaws.com/departamento.jpg'
+    nil
   end
 end
