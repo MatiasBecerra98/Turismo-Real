@@ -23,7 +23,7 @@ class Appartment < ApplicationRecord
   end
 
   def image_url
-    return rails_blob_url(image, disposition: 'attachment') unless
+    return rails_blob_url(image) unless
     image.attachment.nil?
 
     nil

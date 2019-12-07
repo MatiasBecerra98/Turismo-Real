@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :services
   root to: 'admin/dashboard#index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -17,4 +18,5 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   post 'create_user', to: 'authentication#create_user'
   post 'get_available_apartments', to: 'appartments#get_available_apartments'
+  post 'reservations_by_user/:user_id', to: 'reservations#reservations_by_user'
 end

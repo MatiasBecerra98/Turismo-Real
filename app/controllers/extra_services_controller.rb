@@ -69,6 +69,6 @@ class ExtraServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def extra_service_params
-      params.require(:extra_service).permit(:reservation_id, :name)
+      params.require(:extra_service).permit(:reservation_id, :service_id)
     end
 end

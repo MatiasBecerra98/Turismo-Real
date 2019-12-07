@@ -61,6 +61,12 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def reservations_by_user
+    @reservations = Reservation.where(user_id: params[:user_id], status: true)
+
+    render json: @reservations
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation
@@ -69,6 +75,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:user_id, :appartment_id, :starting_date, :ending_date, :total_cost, :paid)
+      params.require(:reservation).permit(:user_id, :appartment_id, :starting_date, :ending_date, :total_cost, :paid, :status)
     end
 end

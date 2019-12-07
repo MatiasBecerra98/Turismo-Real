@@ -11,6 +11,9 @@ es:
       appartment_quality:
         one: "Cualidades depto"
         other: "Cualidades deptos"
+      service:
+        one: "Servicio"
+        other: "Servicios"
       admin_user:
         one: "Usuario Admin"
         other: "Usuarios Administradores"
@@ -101,6 +104,10 @@ es:
       appartment:
         nightly_fee: "Precio por noche"
         address: "Dirección"
+      service:
+        name: "Nombre"
+        price: "Precio"
+        status: "Estado"
   active_admin:
     dashboard: "Inicio"
     dashboard_welcome:

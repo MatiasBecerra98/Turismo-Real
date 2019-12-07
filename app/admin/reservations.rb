@@ -10,6 +10,7 @@ ActiveAdmin.register Reservation do
     column :ending_date
     column :total_cost
     column :paid
+    column :status
     actions
   end
 
@@ -19,6 +20,7 @@ ActiveAdmin.register Reservation do
   filter :ending_date
   filter :total_cost
   filter :paid
+  filter :status
 
   form do |f|
     f.inputs do
@@ -35,6 +37,7 @@ ActiveAdmin.register Reservation do
       f.input :ending_date
       f.input :total_cost
       f.input :paid
+      f.input :status
     end
     f.actions
   end
