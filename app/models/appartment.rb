@@ -20,28 +20,28 @@ class Appartment < ApplicationRecord
           faker_date_to = Faker::Date.between(from: Date.today, to: Date.today + 2.days)
           unless ["active_admin_comments","admin_users","schema_migrations", "ar_internal_metadata", "active_storage_blobs", "active_storage_attachments"].include?(table)
               case table
-              when "profiles"  
+              when "profiles"
                   params = { name: faker_string }
-              when "appartment_qualities" 
-                  params = { appartment_id: Appartment.last.id, cable: faker_boolean, conditioned_air: faker_boolean, internet: faker_boolean, calefaction: faker_boolean} 
-              when "appartments"  
+              when "appartment_qualities"
+                  params = { appartment_id: Appartment.last.id, cable: faker_boolean, conditioned_air: faker_boolean, internet: faker_boolean, calefaction: faker_boolean}
+              when "appartments"
                   params = { nightly_fee: faker_number, description: faker_string, address: faker_string, name: faker_string }
               when "cleaning_events"
-                  params = {  appartment_id: Appartment.last.id, time_of_event: "2016-08-03 02:05:00", janitor_id: 1, reminder_sent: true, } 
+                  params = {  appartment_id: Appartment.last.id, time_of_event: "2016-08-03 02:05:00", janitor_id: 1, reminder_sent: true, }
               when "janitors"
-                  params = {  name: faker_string } 
+                  params = {  name: faker_string }
               when "supplies"
-                  params = {  name: faker_string, cost: faker_number } 
+                  params = {  name: faker_string, cost: faker_number }
               when "supply_movements"
-                  params = {  supply_id: Supply.last.id, appartment_id: Appartment.last.id, movement: faker_number } 
+                  params = {  supply_id: Supply.last.id, appartment_id: Appartment.last.id, movement: faker_number }
               when "services"
-                  params = { name: faker_string, price: faker_number, status: faker_boolean } 
+                  params = { name: faker_string, price: faker_number, status: faker_boolean }
               when "extra_services"
-                  params = {  reservation_id: faker_number, service_id: Service.create(name: faker_string, price: faker_number, status: faker_boolean).id } 
+                  params = {  reservation_id: faker_number, service_id: Service.create(name: faker_string, price: faker_number, status: faker_boolean).id }
               when "reservations"
-                  params = {  user_id: User.last.id, appartment_id: Appartment.first.id, starting_date: faker_date_from, ending_date: faker_date_to, total_cost: faker_number, paid: faker_boolean, status: faker_boolean } 
+                  params = {  user_id: User.last.id, appartment_id: Appartment.first.id, starting_date: faker_date_from, ending_date: faker_date_to, total_cost: faker_number, paid: faker_boolean, status: faker_boolean }
               end
-              
+
               table.singularize.camelize.constantize.create(params)
             end
       end
@@ -61,9 +61,10 @@ class Appartment < ApplicationRecord
   end
 
   def image_url
-    return rails_blob_url(image) unless
-    image.attachment.nil?
+    # return rails_blob_url(image) unless
+    # image.attachment.nil?
 
-    nil
+    # nil
+    'https://appartmetphotos.s3.amazonaws.com/departamento.jpg'
   end
 end
