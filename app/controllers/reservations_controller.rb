@@ -62,19 +62,22 @@ class ReservationsController < ApplicationController
   end
 
   def reservations_by_user
-    @reservations = Reservation.where(user_id: params[:user_id], status: true)
+    @reservations = Reservation.includes(:appartment).where(
+      user_id: params[:user_id], status: true
+    )
 
-    render json: @reservations
+    render :index
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_reservation
-      @reservation = Reservation.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def reservation_params
-      params.require(:reservation).permit(:user_id, :appartment_id, :starting_date, :ending_date, :total_cost, :paid, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_reservation
+    @reservation = Reservation.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def reservation_params
+    params.require(:reservation).permit(:user_id, :appartment_id, :starting_date, :ending_date, :total_cost, :paid, :status)
+  end
 end
