@@ -62,21 +62,20 @@ class AppartmentsController < ApplicationController
   end
 
   def get_available_apartments
-
     @appartments = Appartment.includes(:reservations, :appartment_quality).where.not("daterange(reservations.starting_date, reservations.ending_date, '[]') && daterange(?, ?, '[]')", Date.parse(params[:since_date]).strftime("%Y-%m-%d"), Date.parse(params[:until_date]).strftime("%Y-%m-%d")).references(:reservation)
 
     render json: @appartments
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_appartment
-      @appartment = Appartment.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_appartment
+    @appartment = Appartment.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def appartment_params
-      params.require(:appartment).permit(:nightly_fee, :address, :name,
-                                         :image, :description)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def appartment_params
+    params.require(:appartment).permit(:nightly_fee, :address, :name,
+                                        :image, :description)
+  end
 end

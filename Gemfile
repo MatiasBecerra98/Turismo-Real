@@ -69,4 +69,4 @@ gem 'draper'
 gem 'jwt'
 gem 'pundit'
 #S3
-gem 'aws-sdk-s3', '~> 1'
+gem "aws-sdk-s3", require: false
