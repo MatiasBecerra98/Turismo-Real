@@ -69,6 +69,22 @@ class ReservationsController < ApplicationController
     render :index
   end
 
+  def check_in
+    @reservation = Reservation.find(params[:id])
+
+    @reservation.update_columns(check_in: true)
+
+    redirect_to user_path(@reservation.user_id)
+  end
+
+  def check_out
+    reservation = Reservation.find(params[:id])
+
+    @reservation.update_columns(check_out: true)
+
+    redirect_to user_path(@reservation.user_id)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

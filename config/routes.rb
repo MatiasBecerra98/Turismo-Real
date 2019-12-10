@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   post 'create_user', to: 'authentication#create_user'
   post 'get_available_apartments', to: 'appartments#get_available_apartments'
   post 'reservations_by_user/:user_id', to: 'reservations#reservations_by_user'
+  post 'check_in', to: 'reservations#check_in', as: 'check_in'
+  post 'check_out', to: 'reservations#check_out', as: 'check_out'
 end

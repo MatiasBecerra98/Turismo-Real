@@ -12,6 +12,20 @@ ActiveAdmin.register Reservation do
     column :paid
     column :status
     actions
+    
+    column "Check In" do |resource|
+      link_to("click",
+        check_in_path(id: resource.id),
+        method: :post
+      )
+    end
+
+    column "Check Out" do |resource|
+      link_to("click",
+        check_out_path(id: resource.id),
+        method: :post
+      )
+    end
   end
 
   filter :user_id
