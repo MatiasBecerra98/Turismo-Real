@@ -72,15 +72,15 @@ class ReservationsController < ApplicationController
   def check_in
     @reservation = Reservation.find(params[:id])
 
-    @reservation.update_columns(check_in: true)
+    @reservation.update_columns(check_in_date: DateTime.now, check_in: true)
 
     redirect_to edit_admin_user_path(@reservation.user_id)
   end
 
   def check_out
-    reservation = Reservation.find(params[:id])
+    @reservation = Reservation.find(params[:id])
 
-    @reservation.update_columns(check_out: true)
+    @reservation.update_columns(check_out_date: DateTime.now, check_out: true)
 
     redirect_to edit_admin_user_path(@reservation.user_id)
   end

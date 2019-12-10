@@ -1,6 +1,6 @@
 json.extract! reservation, :id, :user_id, :appartment, :starting_date,
               :ending_date, :total_cost, :paid, :created_at, :updated_at,
-              :status
+              :status, :check_in, :check_in_date, :check_out, :check_out_date
 json.extra_services reservation.extra_services do |ex|
   json.id ex.id
   json.created_at ex.created_at
