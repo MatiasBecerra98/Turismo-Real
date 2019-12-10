@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :supply_movements
   resources :cleaning_events
   resources :appartment_qualities
+  resources :users
   devise_for :users
   resources :profiles
   resources :supplies

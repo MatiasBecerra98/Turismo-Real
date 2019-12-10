@@ -74,7 +74,7 @@ class ReservationsController < ApplicationController
 
     @reservation.update_columns(check_in: true)
 
-    redirect_to user_path(@reservation.user_id)
+    redirect_to edit_admin_user_path(@reservation.user_id)
   end
 
   def check_out
@@ -82,7 +82,7 @@ class ReservationsController < ApplicationController
 
     @reservation.update_columns(check_out: true)
 
-    redirect_to user_path(@reservation.user_id)
+    redirect_to edit_admin_user_path(@reservation.user_id)
   end
 
   private

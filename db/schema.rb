@@ -124,6 +124,10 @@ ActiveRecord::Schema.define(version: 2019_12_10_032134) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "status", default: true
+    t.boolean "check_in"
+    t.boolean "check_out"
+    t.datetime "check_in_date"
+    t.datetime "check_out_date"
     t.index ["appartment_id"], name: "index_reservations_on_appartment_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
