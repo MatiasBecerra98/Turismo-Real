@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   post 'reservations_by_user/:user_id', to: 'reservations#reservations_by_user'
   post 'check_in', to: 'reservations#check_in', as: 'check_in'
   post 'check_out', to: 'reservations#check_out', as: 'check_out'
+  post 'user_by_email', to: 'users#user_by_email'
 end

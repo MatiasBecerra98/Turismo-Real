@@ -61,6 +61,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def user_by_email
+    @user = User.find_by_email(params[:user_email])
+
+    if @user.nil?
+      json = { error: 'No existe usuario' }
+      respond_to do |format|
+        format.json { render json: json }
+      end
+    else
+      render :show
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_user
