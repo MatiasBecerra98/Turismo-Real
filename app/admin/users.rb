@@ -1,26 +1,29 @@
 ActiveAdmin.register User do
-  permit_params :email, :password
+  permit_params :email, :password, :name, :last_name, :phone, :rut
   index do
     selectable_column
     id_column
     column :email
-    column :profile_id
+    column :name
+    column :last_name
+    column :phone
+    column :rut
     actions
   end
 
   filter :email
-  filter :profile_id
+  filter :name
+  filter :last_name
+  filter :phone
+  filter :rut
 
   form do |f|
     f.inputs do
       f.input :email
-      f.input :profile_id,
-              as: :select, collection:
-              Profile.all,
-              label_method: :name,
-              value_method: :id,
-              include_blank: 'Seleccione Perfil',
-              input_html: { style: 'min-width: 100px;' }
+      f.input :name
+      f.input :last_name
+      f.input :phone
+      f.input :rut
       f.input :password
     end
     f.actions
