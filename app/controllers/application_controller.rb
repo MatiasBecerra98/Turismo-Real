@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_request, except: [:check_in, :check_out]
+  before_action :authenticate_request, except: [:check_in, :check_out,
+                                                :reporting_excell]
   attr_reader :current_user
 
   private

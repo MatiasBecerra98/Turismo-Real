@@ -84,6 +84,17 @@ class ReservationsController < ApplicationController
     redirect_to edit_admin_user_path(@reservation.user_id)
   end
 
+  def reporting_excell
+    @appartments = Appartment.all
+    @users = User.all
+    @reservations = Reservation.all
+    respond_to do |format|
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="Reporte.xlsx"'
+      }
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

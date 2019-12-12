@@ -72,3 +72,4 @@ gem 'pundit'
 gem "aws-sdk-s3", require: false
 
 gem 'faker'
+gem 'axlsx_rails'

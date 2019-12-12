@@ -1,0 +1,22 @@
+wb = xlsx_package.workbook
+head = wb.styles.add_style :bg_color => "E7E7E7", :fg_color => "000000", :sz => 15
+wb.add_worksheet(name: "Departamentos") do |sheet|
+  sheet.add_row ["ID", "Precio por noche", "Fecha de creación", "Description", "Dirección", "Nombre", "Cable", "Imagen url", "Aire acondicionado", "internet", "Calefación"], :style => head
+  @appartments.each do |appartment|
+    sheet.add_row [appartment.id, appartment.nightly_fee, appartment.created_at, appartment.description, appartment.address, appartment.name, appartment.cable, appartment.image_url, appartment.conditioned_air, appartment.internet, appartment.calefaction]
+  end
+end
+
+wb.add_worksheet(name: "Usuarios") do |sheet|
+  sheet.add_row ["ID", "Email", "Fecha Registro", "Nombra", "Apellido", "Telefono", "Rut"], :style => head
+  @users.each do |user|
+    sheet.add_row [user.id, user.email, user.created_at, user.name, user.last_name, user.phone, user.rut]
+  end
+end
+
+wb.add_worksheet(name: "Reservaciones") do |sheet|
+  sheet.add_row ["RESERVACIÓN", "Reservación ID", "Id usuario", "Id departamento", "Fecha inicio Reservación", "Fecha fin Reservación", "Costo Total", "Pagado", "Fecha creación", "Estado", "Check IN", "Check Out", "Fecha Check IN", "Fecha Check Out","USUARIO", "Id usuario", "Email usuario", "Fecha de registro usuario", "Nombre usuario","Apellido usuario", "Telefono usuario", "Rut usuario","DEPARTAMENTO","Id departamento", "Precio por noche", "Fecha de creación", "Description", "Dirección", "Nombre", "Cable", "Imagen url", "Aire acondicionado", "internet", "Calefación", "SERVICIOS EXTRAS","Servicio extra y precio"], :style => head
+  @reservations.each do |reservation|
+    sheet.add_row ["RESERVACIÓN",reservation.id, reservation.user_id, reservation.appartment_id, reservation.starting_date, reservation.ending_date, reservation.total_cost, reservation.paid, reservation.created_at, reservation.status, reservation.check_in, reservation.check_out, reservation.check_in_date, reservation.check_out_date,"USUARIO",reservation.user.id, reservation.user.email, reservation.user.created_at, reservation.user.name, reservation.user.last_name, reservation.user.phone, reservation.user.rut,"DEPARTAMENTO", reservation.appartment.id, reservation.appartment.nightly_fee, reservation.appartment.created_at, reservation.appartment.description, reservation.appartment.address, reservation.appartment.name, reservation.appartment.cable, reservation.appartment.image_url, reservation.appartment.conditioned_air, reservation.appartment.internet, reservation.appartment.calefaction,"SERVICIOS EXTRAS", reservation.extra_services.map { |exs| "servicio: #{exs.service.name}, precio: #{exs.service.price}"}]
+  end
+end
