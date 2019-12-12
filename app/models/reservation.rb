@@ -3,6 +3,7 @@ class Reservation < ApplicationRecord
   belongs_to :appartment
   has_many :extra_services
 
+  validate :validate_starting_date
   validate :validate_dates
 
   def validate_dates
@@ -16,6 +17,15 @@ class Reservation < ApplicationRecord
 
     unless used_reservations.empty?
       errors.add(:error, 'Existe reservación')
+      return false
+    end
+
+    true
+  end
+
+  def validate_starting_date
+    if starting_date.to_date.beginning_of_day < Time.now.beginning_of_day
+      errors.add(:error, 'Fecha no puede ser menor a la fecha de hoy')
       return false
     end
 
