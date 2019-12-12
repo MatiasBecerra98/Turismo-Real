@@ -8,7 +8,7 @@ wb.add_worksheet(name: "Departamentos") do |sheet|
 end
 
 wb.add_worksheet(name: "Usuarios") do |sheet|
-  sheet.add_row ["ID", "Email", "Fecha Registro", "Nombra", "Apellido", "Telefono", "Rut"], :style => head
+  sheet.add_row ["ID", "Email", "Fecha Registro", "Nombre", "Apellido", "Telefono", "Rut"], :style => head
   @users.each do |user|
     sheet.add_row [user.id, user.email, user.created_at, user.name, user.last_name, user.phone, user.rut]
   end
