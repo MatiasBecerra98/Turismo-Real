@@ -27,4 +27,5 @@ json.extra_services reservation.extra_services do |ex|
     json.created_at ex.service.created_at
   end
 end
+json.pdf_url reservation.url_pdf_s3
 json.url reservation_url(reservation, format: :json)

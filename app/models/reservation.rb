@@ -15,7 +15,7 @@ class Reservation < ApplicationRecord
       starting_date.beginning_of_day,
       ending_date.end_of_day
     )
-    
+
     if used_reservations.count > 1
       errors.add(:error, 'Existe reservación')
       return false
@@ -31,5 +31,11 @@ class Reservation < ApplicationRecord
     end
 
     true
+  end
+
+  def url_pdf_s3
+    return polymorphic_url(pdf) unless pdf.attachment.nil?
+
+    nil
   end
 end
