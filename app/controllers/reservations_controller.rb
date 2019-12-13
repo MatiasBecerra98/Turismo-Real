@@ -15,31 +15,38 @@ class ReservationsController < ApplicationController
   def pdf_invoice
     @reservation = Reservation.find(params[:id])
 
-    pdf_string = WickedPdf.new.pdf_from_string(
-      render_to_string(pdf: "Reservation #{@reservation.id}",
-        page_size: 'A4',
-        template: "reservations/pdf_invoice.html.erb",
-        layout: nil,
-        orientation: "Landscape",
-        lowquality: true,
-        zoom: 1,
-        dpi: 75,
-        encoding: 'utf8'
-      )
+    # pdf_string = render_to_string(
+    #   pdf: "Reservation #{@reservation.id}",
+    #   page_size: 'A4',
+    #   template: 'reservations/pdf_invoice.html.erb',
+    #   layout: nil,
+    #   orientation: 'Landscape',
+    #   lowquality: true,
+    #   zoom: 1,
+    #   dpi: 75,
+    #   encoding: 'utf8'
+    # )
+
+    pdf_html = ActionController::Base.new.render_to_string(
+      pdf: "Reservation #{@reservation.id}",
+      page_size: 'A4',
+      locals: { reservation: @reservation},
+      template: 'reservations/pdf_invoice.html.erb',
+      layout: nil,
+      orientation: 'Landscape',
+      lowquality: true,
+      zoom: 1,
+      dpi: 75,
+      encoding: 'utf8'
     )
-
-    tempfile = Tempfile.new(["Reservation #{@reservation.id}", ".pdf"], Rails.root.join('tmp'))
-    tempfile.binmode
-    tempfile.write pdf_string
-    tempfile.close
-
-    self.pdf = File.open tempfile.path
-    self.pdf_file_name = "Reservation #{@reservation.id}.pdf"
-
-    self.pdf_url = self.pdf.s3_object.url_for(:read, secure: true, expires: 90.days).to_s
-    save
-
-    tempfile.unlink
+    pdf = WickedPdf.new.pdf_from_string(pdf_html)
+    save_path = Rails.root.join('tmp', "pdf_#{@reservation.id}.pdf")
+    File.open(save_path, 'wb').write(pdf)
+    @reservation.pdf.attach(
+      io: File.open(save_path.to_s),
+      filename: "Reservation-#{@reservation.id}.pdf"
+    )
+    @reservation.save
 
     respond_to do |format|
       format.pdf do

@@ -2,6 +2,7 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :appartment
   has_many :extra_services, dependent: :destroy
+  has_one_attached :pdf, dependent: :destroy
 
   validate :validate_starting_date
   validate :validate_dates

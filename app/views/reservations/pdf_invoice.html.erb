@@ -1,21 +1,21 @@
-<p>Reservacion Nº <%= @reservation.id %></p></p>
-<p>Nombre: <%= @reservation.user.full_name %></p>
-<p>Email: <%= @reservation.user.email %></p>
-<p>Teléfono: <%= @reservation.user.phone %></p>
-<p>Departamento: <%= @reservation.appartment.id %></p>
-<p>Dirección: <%= @reservation.appartment.address %></p>
-<p>Costo por noche: $<%= @reservation.appartment.nightly_fee %></p>
-Servicios Extras: 
-<p>Cable: <%= @reservation.appartment.appartment_quality.cable ? "Si" : "No" %></p>
-<p>Aire Aconicionado: <%= @reservation.appartment.appartment_quality.conditioned_air ? "Si" : "No" %></p>
-<p>Internet: <%= @reservation.appartment.appartment_quality.internet ? "Si" : "No" %></p>
-<p>Calefacción: <%= @reservation.appartment.appartment_quality.calefaction ? "Si" : "No" %></p>
+<p>Reservacion Nº <%= reservation.id %></p></p>
+<p>Nombre: <%= reservation.user.full_name %></p>
+<p>Email: <%= reservation.user.email %></p>
+<p>Teléfono: <%= reservation.user.phone %></p>
+<p>Departamento: <%= reservation.appartment.id %></p>
+<p>Dirección: <%= reservation.appartment.address %></p>
+<p>Costo por noche: $<%= reservation.appartment.nightly_fee %></p>
+Servicios Extras:
+<p>Cable: <%= reservation.appartment.cable ? "Si" : "No" %></p>
+<p>Aire Aconicionado: <%= reservation.appartment.conditioned_air ? "Si" : "No" %></p>
+<p>Internet: <%= reservation.appartment.internet ? "Si" : "No" %></p>
+<p>Calefacción: <%= reservation.appartment.calefaction ? "Si" : "No" %></p>
 
 ----------------------------------------------
 
-<p>Total: $ <%= @reservation.total_cost %></p>
+<p>Total: $ <%= reservation.total_cost %></p>
 
-<p>Dia y Hora Check In: <%= @reservation.check_in_date.nil? ? '' : @reservation.check_in_date.strftime("%d/%m/%Y") %></p>
+<p>Dia y Hora Check In: <%= reservation.check_in_date.nil? ? '' : reservation.check_in_date.strftime("%d/%m/%Y") %></p>
 <p>Estado del pago: Pagado</p>
 
 ----------------------------------------------
