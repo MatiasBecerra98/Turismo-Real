@@ -1,4 +1,7 @@
 class Reservation < ApplicationRecord
+  include ActionDispatch::Routing::PolymorphicRoutes
+  include Rails.application.routes.url_helpers
+
   belongs_to :user
   belongs_to :appartment
   has_many :extra_services, dependent: :destroy
@@ -15,7 +18,7 @@ class Reservation < ApplicationRecord
       starting_date.beginning_of_day,
       ending_date.end_of_day
     )
-    
+
     if used_reservations.count > 1
       errors.add(:error, 'Existe reservación')
       return false
@@ -31,5 +34,11 @@ class Reservation < ApplicationRecord
     end
 
     true
+  end
+
+  def url_pdf_s3
+    return polymorphic_url(pdf) unless pdf.attachment.nil?
+
+    nil
   end
 end
