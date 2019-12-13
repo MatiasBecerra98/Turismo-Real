@@ -108,7 +108,8 @@ class ReservationsController < ApplicationController
     pdf = WickedPdf.new.pdf_from_string(body_html,
                 orientation: 'Portrait',
                 margin: { bottom: 10, top: 10, left: 0, right: 0 },
-                zoom: '1.5')
+                zoom: '1.5',
+                encoding: 'utf8')
     #########
 
     save_path = Rails.root.join('public', "pdf_#{@reservation.id}.pdf")

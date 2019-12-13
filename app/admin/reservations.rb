@@ -16,13 +16,13 @@ ActiveAdmin.register Reservation do
   
     column "Check In" do |resource|
       if !resource.check_in
-        link_to("click",
+        link_to("<i class='material-icons'>check_circle</i>".html_safe,
           check_in_path(id: resource.id),
           method: :post
         )
       else
         if resource.pdf.attached?
-          link_to("pdf",
+          link_to("<i class='material-icons'>picture_as_pdf</i>".html_safe,
             polymorphic_url(resource.pdf),
             method: :get
           )
@@ -31,8 +31,8 @@ ActiveAdmin.register Reservation do
     end
 
     column "Check Out" do |resource|
-      if !resource.check_out
-        link_to("click",
+      if !resource.check_out && resource.check_in
+        link_to("<i class='material-icons'>arrow_right_alt</i>".html_safe,
           check_out_path(id: resource.id),
           method: :post
         )

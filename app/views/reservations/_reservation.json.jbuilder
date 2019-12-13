@@ -6,7 +6,7 @@ json.appartment do
   json.nightly_fee reservation.appartment.nightly_fee
   json.name reservation.appartment.name
   json.description reservation.appartment.description
-  json.addres reservation.appartment.address
+  json.address reservation.appartment.address
   json.created_at reservation.appartment.created_at
   json.updated_at reservation.appartment.updated_at
   json.cabl reservation.appartment.cable

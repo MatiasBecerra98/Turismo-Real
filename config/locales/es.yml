@@ -19,11 +19,14 @@ es:
         one: "Usuario Admin"
         other: "Usuarios Administradores"
       appartment:
-        one: "Depto"
-        other: "Deptos"
+        one: "Deptartamento"
+        other: "Departamentos"
       cleaning_event:
         one: "Evento de limpieza"
         other: "Eventos de limpieza"
+      reservation:
+        one: "Reservacion"
+        other: "Reservaciones"
       extra_service:
         one: "Servicio Extra"
         other: "Servicios Extra"

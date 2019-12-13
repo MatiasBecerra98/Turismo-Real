@@ -15,7 +15,10 @@ Servicios Extras:
 
 <p>Total: $ <%= reservation.total_cost %></p>
 
-<p>Dia y Hora Check In: <%= reservation.check_in_date.nil? ? '' : reservation.check_in_date.strftime("%d/%m/%Y") %></p>
+<p>Dia y Hora Check In: <%= reservation.check_in_date.nil? ? '' : reservation.check_in_date.strftime("%d/%m/%Y %H:%M:%S") %></p>
+<% if !reservation.check_in_date.nil? %>
+    <p>Dia y Hora Check Out: <%= reservation.check_out_date.nil? ? '' : reservation.check_out_date.strftime("%d/%m/%Y %H:%M:%S") %></p>
+<% end %>
 <p>Estado del pago: Pagado</p>
 
 ----------------------------------------------
