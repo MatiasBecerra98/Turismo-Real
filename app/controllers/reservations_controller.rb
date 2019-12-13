@@ -27,25 +27,18 @@ class ReservationsController < ApplicationController
     #   encoding: 'utf8'
     # )
 
-    pdf_html = ActionController::Base.new.render_to_string(
-      pdf: "Reservation #{@reservation.id}",
-      page_size: 'A4',
-      locals: { reservation: @reservation},
-      template: 'reservations/pdf_invoice.html.erb',
-      layout: nil,
-      orientation: 'Landscape',
-      lowquality: true,
-      zoom: 1,
-      dpi: 75,
-      encoding: 'utf8'
-    )
-    pdf = WickedPdf.new.pdf_from_string(pdf_html)
-    save_path = Rails.root.join('tmp', "pdf_#{@reservation.id}.pdf")
-    File.open(save_path, 'wb').write(pdf)
-    @reservation.pdf.attach(
-      io: File.open(save_path.to_s),
-      filename: "Reservation-#{@reservation.id}.pdf"
-    )
+    body_html = render_to_string( partial: 'reservations/pdf_invoice.html.erb', 
+      locals:  { reservation: @reservation} )
+
+    pdf = WickedPdf.new.pdf_from_string(body_html,
+                orientation: 'Portrait',
+                margin: { bottom: 10, top: 10, left: 0, right: 0 },
+                zoom: '1.5')
+    #########
+
+    save_path = Rails.root.join('public', "pdf_#{@reservation.id}.pdf")
+    file = File.open(save_path, 'wb').write(pdf)
+    @reservation.pdf.attach(io: File.open(save_path), filename: "pdf_#{@reservation.id}.pdf")
     @reservation.save
 
     respond_to do |format|

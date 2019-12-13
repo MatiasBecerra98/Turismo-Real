@@ -15,8 +15,8 @@ class Reservation < ApplicationRecord
       starting_date.beginning_of_day,
       ending_date.end_of_day
     )
-
-    unless used_reservations.empty?
+    
+    if used_reservations.count > 1
       errors.add(:error, 'Existe reservación')
       return false
     end
