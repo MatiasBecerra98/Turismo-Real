@@ -1,4 +1,7 @@
 class Reservation < ApplicationRecord
+  include ActionDispatch::Routing::PolymorphicRoutes
+  include Rails.application.routes.url_helpers
+
   belongs_to :user
   belongs_to :appartment
   has_many :extra_services, dependent: :destroy
