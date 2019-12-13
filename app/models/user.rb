@@ -6,4 +6,8 @@ class User < ApplicationRecord
   has_many :reservations
 
   has_secure_password
+
+  def full_name
+    name.to_s + " " + last_name.to_s
+  end
 end

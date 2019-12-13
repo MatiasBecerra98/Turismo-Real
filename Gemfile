@@ -73,3 +73,5 @@ gem "aws-sdk-s3", require: false
 
 gem 'faker'
 gem 'axlsx_rails'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'

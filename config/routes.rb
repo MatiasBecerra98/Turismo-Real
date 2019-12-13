@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   post 'check_out', to: 'reservations#check_out', as: 'check_out'
   post 'user_by_email', to: 'users#user_by_email'
   post 'reporting_excell', to: 'reservations#reporting_excell', format: 'xlsx'
+  get 'pdf_invoice', to: 'reservations#pdf_invoice', format: :pdf
 end

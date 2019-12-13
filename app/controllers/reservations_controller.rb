@@ -12,6 +12,50 @@ class ReservationsController < ApplicationController
   def show
   end
 
+  def pdf_invoice
+    @reservation = Reservation.find(params[:id])
+
+    pdf_string = WickedPdf.new.pdf_from_string(
+      render_to_string(pdf: "Reservation #{@reservation.id}",
+        page_size: 'A4',
+        template: "reservations/pdf_invoice.html.erb",
+        layout: nil,
+        orientation: "Landscape",
+        lowquality: true,
+        zoom: 1,
+        dpi: 75,
+        encoding: 'utf8'
+      )
+    )
+
+    tempfile = Tempfile.new(["Reservation #{@reservation.id}", ".pdf"], Rails.root.join('tmp'))
+    tempfile.binmode
+    tempfile.write pdf_string
+    tempfile.close
+
+    self.pdf = File.open tempfile.path
+    self.pdf_file_name = "Reservation #{@reservation.id}.pdf"
+
+    self.pdf_url = self.pdf.s3_object.url_for(:read, secure: true, expires: 90.days).to_s
+    save
+
+    tempfile.unlink
+    
+    respond_to do |format|
+      format.pdf do
+        render pdf: "Reservation #{@reservation.id}",
+        page_size: 'A4',
+        template: "reservations/pdf_invoice.html.erb",
+        layout: nil,
+        orientation: "Landscape",
+        lowquality: true,
+        zoom: 1,
+        dpi: 75,
+        encoding: 'utf8'
+      end
+    end
+  end
+
   # GET /reservations/new
   def new
     @reservation = Reservation.new
@@ -25,7 +69,7 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-
+    debugger
     respond_to do |format|
       if @reservation.save
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
