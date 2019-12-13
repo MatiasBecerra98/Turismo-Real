@@ -40,7 +40,7 @@ class ReservationsController < ApplicationController
     save
 
     tempfile.unlink
-    
+
     respond_to do |format|
       format.pdf do
         render pdf: "Reservation #{@reservation.id}",
@@ -69,7 +69,6 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-    debugger
     respond_to do |format|
       if @reservation.save
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
