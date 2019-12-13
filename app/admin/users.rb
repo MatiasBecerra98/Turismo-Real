@@ -25,7 +25,6 @@ ActiveAdmin.register User do
       f.input :phone
       f.input :rut
       f.input :password
-      f.input :password
       f.input :password_confirmation
     end
     f.actions
