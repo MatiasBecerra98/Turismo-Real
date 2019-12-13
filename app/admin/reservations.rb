@@ -13,12 +13,20 @@ ActiveAdmin.register Reservation do
     column :status
     actions
     
+  
     column "Check In" do |resource|
       if !resource.check_in
         link_to("click",
           check_in_path(id: resource.id),
           method: :post
         )
+      else
+        if resource.pdf.attached?
+          link_to("pdf",
+            polymorphic_url(resource.pdf),
+            method: :get
+          )
+        end
       end
     end
 

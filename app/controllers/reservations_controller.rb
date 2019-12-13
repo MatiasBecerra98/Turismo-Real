@@ -27,20 +27,6 @@ class ReservationsController < ApplicationController
     #   encoding: 'utf8'
     # )
 
-    body_html = render_to_string( partial: 'reservations/pdf_invoice.html.erb', 
-      locals:  { reservation: @reservation} )
-
-    pdf = WickedPdf.new.pdf_from_string(body_html,
-                orientation: 'Portrait',
-                margin: { bottom: 10, top: 10, left: 0, right: 0 },
-                zoom: '1.5')
-    #########
-
-    save_path = Rails.root.join('public', "pdf_#{@reservation.id}.pdf")
-    file = File.open(save_path, 'wb').write(pdf)
-    @reservation.pdf.attach(io: File.open(save_path), filename: "pdf_#{@reservation.id}.pdf")
-    @reservation.save
-
     respond_to do |format|
       format.pdf do
         render pdf: "Reservation #{@reservation.id}",
@@ -115,6 +101,20 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
 
     @reservation.update_columns(check_in_date: DateTime.now, check_in: true)
+
+    body_html = render_to_string( partial: 'reservations/pdf_invoice.html.erb', 
+      locals:  { reservation: @reservation} )
+
+    pdf = WickedPdf.new.pdf_from_string(body_html,
+                orientation: 'Portrait',
+                margin: { bottom: 10, top: 10, left: 0, right: 0 },
+                zoom: '1.5')
+    #########
+
+    save_path = Rails.root.join('public', "pdf_#{@reservation.id}.pdf")
+    file = File.open(save_path, 'wb').write(pdf)
+    @reservation.pdf.attach(io: File.open(save_path), filename: "pdf_#{@reservation.id}.pdf")
+    @reservation.save
 
     redirect_to edit_admin_user_path(@reservation.user_id)
   end
